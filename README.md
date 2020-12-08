@@ -9,6 +9,7 @@ Second file (listPalindrome.py)
 
 Third file  (matrices.py):
       This file contains the code for questions 1 (a),(b),(c)
+      the first function for multiplying two matrices was written originally by me and the second function was done in the psuc class.
 
 Fifth file (removeDuplicates.py):
       This  file contains the code for questions 2 (a), (b)
