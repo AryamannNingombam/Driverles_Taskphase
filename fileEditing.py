@@ -17,7 +17,7 @@ def findMin(string)->int:
 
 fileContents = []
 
-with open("names.txt",'r') as file:
+with open("names.csv",'r') as file:
     fileContents = file.readlines()
     for j,i in enumerate(fileContents):
         fileContents[j] = i.replace("\n","").split(',')
@@ -27,7 +27,7 @@ with open("names.txt",'r') as file:
     print(fileContents)
 
 final = []
-with open("names.txt","w") as file:
+with open("names.csv","w") as file:
     for j,i in enumerate(fileContents):
         if (j+1 & 1):
             continue
