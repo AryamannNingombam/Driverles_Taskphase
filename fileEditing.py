@@ -19,6 +19,7 @@ fileContents = []
 
 with open("names.csv",'r') as file:
     fileContents = file.readlines()
+    fileContents.pop(0)
     for j,i in enumerate(fileContents):
         fileContents[j] = i.replace("\n","").split(',')
     #Sorting
@@ -28,6 +29,7 @@ with open("names.csv",'r') as file:
 
 final = []
 with open("names.csv","w") as file:
+    file.write("Name,Number\n")
     for j,i in enumerate(fileContents):
         if (j+1 & 1):
             continue
