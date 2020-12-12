@@ -3,12 +3,23 @@ def printPattern(arr):
     pointer = 0
 
     length = len(arr)
-    while (pointer <= length/2):
-        print(''.join(arr[:pointer+1] + arr[:pointer][::-1]))
+    allPatterns = []
+    while (pointer <= length/2  + 1):
+        stringToPrint = ''.join(arr[:pointer+1] + arr[:pointer][::-1])
+        allPatterns.append(stringToPrint)
+        
         pointer+=1
-    while (pointer>=0):
-        print(''.join(arr[:pointer+1] + arr[:pointer][::-1]))
-        pointer-=1
+    secondLength = len(allPatterns[-1])
+    spaces = secondLength//2
+    for i in allPatterns:
+        print(' '*spaces + i)
+        spaces-=1
+
+
+    spaces = 0
+    for i in allPatterns[::-1]:
+        print(' '*spaces + i)
+        spaces+=1
 
 
 
@@ -26,14 +37,16 @@ def isPalindrome(fullList,left,right):
     return False
 
 
-userInput = input("Enter the elements : ").split()
+# userInput = input("Enter the elements : ").split()
 
-result = isPalindrome(userInput,0,len(userInput)-1)
-if result:
-    print("Palindrome!")
-    for i in userInput:
-        print(hex(ord(i)),end=' ')
-    print('\n')
-else:
-    print("Not palindrome!")
-    printPattern(['a','b','c','d'])
+# result = isPalindrome(userInput,0,len(userInput)-1)
+# if result:
+#     print("Palindrome!")
+#     for i in userInput:
+#         print(hex(ord(i)),end=' ')
+#     print('\n')
+# else:
+#     print("Not palindrome!")
+#     printPattern(['a','b','c','d'])
+
+(printPattern(['f','m','d','a']))
