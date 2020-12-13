@@ -10,6 +10,16 @@ def generateMatrix(row,col):
         result.append(temp)
     return result
 
+
+def displayMatrix(arr):
+    for i in arr:
+        for j in i:
+            print(j,end=' ')
+        print('\n')
+    return
+
+
+
 def multiply2(arr1,arr2):
       #Get number of rows for the final answer
     rowsInAnswer = len(arr1)
@@ -107,11 +117,40 @@ def transpose(arr):
 
     return finalResult
 
-#4 X 3
-matrix1 = [[1,2,3],[4,56,66],[34,23,534],[6,4345454,243]]
-#3 X 5
-matrix2 = [[1,4324,2344,2,4234],[34,343,4542234,234325,234],[754,46,4561,646,54]]
 
-print(multiply(matrix1,matrix2) == multiply2(matrix1,matrix2))
-#True   
+dim1 = list(map(int,input("Enter the dimensions of the first matrix : ").split(' ')))
+dim2 = list(map(int,input("Enter the dimensions of the second matrix : ").split(' ')))
+
+if (dim1[1] != dim2[0]):
+    print("MULTIPLICATION NOT POSSIBLE!")
+else:
+    matrix1 = generateMatrix(dim1[0],dim1[1])
+
+    for i in range(dim1[0]):
+        for j in range(dim1[1]):
+            matrix1[i][j] = int(input("Enter the element for first : "))
+    
+    matrix2 = generateMatrix(dim2[0],dim2[1])
+
+    for i in range(dim2[0]):
+        for j in range(dim2[1]):
+            matrix2[i][j] = int(input("Enter the element for second :  "))
+    print(matrix1)
+    print(matrix2)
+    print("Matrix 1 : ")
+    displayMatrix(matrix1)
+    print("Matrix 2 : ")
+    displayMatrix(matrix2)
+
+    print("RESULT")
+    result = multiply(matrix1,matrix2)
+    displayMatrix(result)
+
+    print("Verifying transpose(AB) = transpose(B)transpose(A)")    
+    print("transpose(A*B)")
+    displayMatrix(transpose(result))
+    print("transpose(B) * transpose(A)")
+    displayMatrix(multiply(transpose(matrix2),transpose(matrix1)))
+    print("BOTH EQUAL!")
+
 

@@ -19,4 +19,7 @@ def addAll(arr,pointer = 0,sum_=0):
 
 tempList = list(map(int,input("Enter the elements : ").split(' ')))
 mainTuple = removeDuplicates(tuple(tempList)) 
-print(addAll(mainTuple))
+print("The elements after removing -> ",mainTuple,sep=' ')
+
+
+print(f'SUM : {str(addAll(mainTuple))}')
