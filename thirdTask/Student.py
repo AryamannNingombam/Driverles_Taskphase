@@ -21,6 +21,8 @@ class Student():
         if (self.scienceMarks<90 or self.mathsMarks<90 or self.SSTMarks < 90 or self.englishMarks <90):
             return False
         return True
+    
+    
 
     
 
