@@ -1,13 +1,19 @@
 from Student import Student
-
+from tabulate import tabulate
+import numpy as np
 #  Name, Admission number, Roll number, 
 # Class, Science marks, Maths marks, Social studies marks and English marks
 
 class ReportCard():
-    def __init__(self,allStudents):
+    def __init__(self,allStudents,headings):
         self.allStudents  = allStudents
+        self.headings = headings
+    def display(self):
+        print(tabulate(self.allStudents,self.headings))
+        quit = input("Press enter to quit.")
+        return
     def validateNumber(self,num):
-        if (not num.isnumeric() or num<=0):
+        if (not num.isnumeric() or int(num)<=0):
             print("INVALID\nPlease make sure that you have entered only numeric values")
             return False
         return True
@@ -24,13 +30,13 @@ class ReportCard():
         admissionNumber = input("Enter the admission number of the student : ")
         if (not self.validateNumber(admissionNumber)):
             return False
-        admissionNumber = int(admissionNumber)
+        admissionNumber = (admissionNumber)
         
         rollNumber = input("Enter the roll number of the student : ")
         if (not self.validateNumber(rollNumber)):
             
             return False
-        rollNumber = int(rollNumber)
+        rollNumber = (rollNumber)
 
         cl = input("Enter the standard of the student(IN NUMERIC FORM) : ")
         if (not self.validateNumber(cl)):
@@ -39,27 +45,27 @@ class ReportCard():
         
         if (not self.validateNumber(scienceMarks)):
             return False
-        scienceMarks = float(scienceMarks)
+        scienceMarks = (scienceMarks)
 
         mathsMarks = input("Enter the marks obtained in Maths : ")
         if (not self.validateNumber(mathsMarks)):
             return False
 
-        mathsMarks = float(mathsMarks)
+        mathsMarks = (mathsMarks)
 
         SSTMarks = input("Enter the marks obtained in SST : ") 
         if (not self.validateNumber(SSTMarks)):
             return False
-        SSTMarks = float(SSTMarks)
+        SSTMarks = (SSTMarks)
 
         englishMarks = input("Enter the marks obtained in English")                
         if (not self.validateNumber(englishMarks)):
             return False
-        englishMarks = float(englishMarks)
+        englishMarks = (englishMarks)
 
         #Everything entered is valid
         newStudent = Student(name,admissionNumber,rollNumber,cl,scienceMarks,mathsMarks,SSTMarks,englishMarks)
-        self.allStudents.append(newStudent)
+        self.allStudents = np.append(self.allStudents,[newStudent])
     
     def updateDetails(self,index):
         thingToUpdate = "1"
@@ -80,14 +86,14 @@ class ReportCard():
                     continue
                 
                 else:
-                    self.allStudents[index].admissionNumber=  int(newAdmissionNumber)
+                    self.allStudents[index].admissionNumber=  (newAdmissionNumber)
                     print("Updated!")
             elif (thingToUpdate == '3'):
                 newRollNumber = input("Enter the new roll number of the student : ")
                 if (not self.validateNumber(newRollNumber)):
                     continue
                 else:
-                    self.allStudents[index].rollNumber = int(newRollNumber)
+                    self.allStudents[index].rollNumber = (newRollNumber)
                     print("Updated!")
             elif (thingToUpdate == '4'):
                 newClass = input("Enter the new standard of the student :(NUMERIC ONLY) ")
@@ -102,7 +108,7 @@ class ReportCard():
                 if (not self.validateNumber(newScienceMarks)):
                     continue
                 else:
-                    self.allStudents[index].scienceMarks = float(newScienceMarks)
+                    self.allStudents[index].scienceMarks = (newScienceMarks)
                     print("Updated!")
             
             elif (thingToUpdate == '6'):
@@ -111,7 +117,7 @@ class ReportCard():
                 if (not self.validateNumber(newMathsMarks)):
                     continue
                 else:
-                    self.allStudents[index].mathsMarks = float(newMathsMarks)
+                    self.allStudents[index].mathsMarks = (newMathsMarks)
                     print("Updated!")
 
             elif (thingToUpdate == '7'):
@@ -120,7 +126,7 @@ class ReportCard():
                 if (not self.validateNumber(newSSTMarks)):
                     continue
                 else:
-                    self.allStudents[index].SSTMarks = float(newSSTMarks)
+                    self.allStudents[index].SSTMarks = (newSSTMarks)
                 print("Updated!")
 
             elif (thingToUpdate == '8'):
@@ -129,7 +135,7 @@ class ReportCard():
                 if (not self.validateNumber(newEnglishMarks)):
                     continue
                 else:
-                    self.allStudents[index].englishMarks =float(newEnglishMarks)
+                    self.allStudents[index].englishMarks =(newEnglishMarks)
                 print("Updated!")
             elif (thingToUpdate == '9'):
                 break
@@ -139,6 +145,8 @@ class ReportCard():
 
 
         print("All details updated!")
+
+    
 
 
         
