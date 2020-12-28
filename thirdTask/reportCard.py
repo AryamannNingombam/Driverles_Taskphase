@@ -1,8 +1,14 @@
 from Student import Student
 from tabulate import tabulate
 import numpy as np
+import shutil
+
+
 #  Name, Admission number, Roll number, 
 # Class, Science marks, Maths marks, Social studies marks and English marks
+def printCenter(string):
+        return ((string).center(shutil.get_terminal_size().columns))
+
 
 class ReportCard():
     def __init__(self,allStudents,headings):
@@ -11,6 +17,32 @@ class ReportCard():
         for i in allStudents:
             self.allStudents.append(i.returnList())
         self.headings = headings
+
+    def getAggregateList(self):
+        print(printCenter("STUDENTS WHO PASSED AGGREGATE\n"))
+        aggregateStudents  = list(filter(lambda x : x.getAggregate()>=90,self.allStudentObjects))
+        self.printRanked(aggregateStudents)
+
+
+
+    def parameter(self,student):
+        return student.getAggregate()
+
+    def printRanked(self,ranked):
+        counter=1
+        for i in ranked[:10]:
+            print(printCenter(str(counter)+'.' +str(i)))
+            counter+=1
+        inp = input("Press enter to continue : ")
+
+    def rankStudents(self):
+        print(printCenter("RANKS SCORED ABOVE AGGREGATE\n"))
+        ranked = self.allStudentObjects
+        ranked.sort(key=self.parameter,reverse=True)
+        self.printRanked(ranked)
+        
+        
+
     def display(self):
         print(tabulate(self.allStudents,self.headings))
         quit = input("Press enter to quit.")
@@ -61,7 +93,7 @@ class ReportCard():
             return False
         SSTMarks = (SSTMarks)
 
-        englishMarks = input("Enter the marks obtained in English")                
+        englishMarks = input("Enter the marks obtained in English : ")                
         if (not self.validateNumber(englishMarks)):
             return False
         englishMarks = (englishMarks)

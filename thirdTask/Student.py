@@ -14,6 +14,9 @@ class Student():
         self.SSTMarks = SSTMarks
         self.englishMarks = englishMarks
 
+    def __str__(self) -> str:
+        return f"{self.name} | {self.getAggregate()}%"
+
     def getAggregate(self):
         return stat.mean([self.scienceMarks,self.mathsMarks,self.SSTMarks,self.englishMarks])
 

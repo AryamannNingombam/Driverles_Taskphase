@@ -4,6 +4,10 @@ from reportCard import ReportCard
 import shutil
 from Student import Student
 
+
+
+
+
 def returnStudentList(arr):
     result = []
     for i in arr:
@@ -20,7 +24,7 @@ def INVALID():
     print("INVALID")
 
 def printCenter(string):
-    print(string.center(shutil.get_terminal_size().columns))
+        print(string.center(shutil.get_terminal_size().columns))
 
 def printOptions():
     printCenter("REPORT CARD")
@@ -36,7 +40,7 @@ def printOptions():
     """)
     return
 allStudentsCSV = pn.read_csv("./studentList.csv")
-print(allStudentsCSV.values)
+
 
 
 studentReportCard = ReportCard(returnStudentList(allStudentsCSV.values),allStudentsCSV.columns)
@@ -53,17 +57,24 @@ while (userInput != '6'):
         if (userInput == '1'):
             studentReportCard.display()
 
-        if (userInput == '5'):
+        # elif (userInput == '2'):
+
+
+        elif (userInput == '3'):
+            (studentReportCard.rankStudents())
+
+        elif (userInput == '4'):
+            studentReportCard.getAggregateList()
+
+        elif (userInput == '5'):
             if (studentReportCard.addStudent()):
                 print("Student added!")
             
-
+    
         
         elif (userInput == '6'):
             print("\nThank you!\n")
             break
     
-    
-
 
 
