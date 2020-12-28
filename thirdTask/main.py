@@ -2,7 +2,13 @@ import pandas as pn
 import numpy as np
 from reportCard import ReportCard
 import shutil
+from Student import Student
 
+def returnStudentList(arr):
+    result = []
+    for i in arr:
+        result.append(Student(i[0],i[1],i[2],i[3],i[4],i[5],i[6],i[7]))
+    return result
 
 def checkUserInput(string):
     if (not string.isnumeric()):
@@ -30,8 +36,10 @@ def printOptions():
     """)
     return
 allStudentsCSV = pn.read_csv("./studentList.csv")
+print(allStudentsCSV.values)
 
-studentReportCard = ReportCard(allStudentsCSV.values,allStudentsCSV.columns)
+
+studentReportCard = ReportCard(returnStudentList(allStudentsCSV.values),allStudentsCSV.columns)
 
 userInput = "sexy"
 

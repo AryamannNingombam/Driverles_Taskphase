@@ -6,7 +6,10 @@ import numpy as np
 
 class ReportCard():
     def __init__(self,allStudents,headings):
-        self.allStudents  = allStudents
+        self.allStudentObjects= allStudents
+        self.allStudents  = []
+        for i in allStudents:
+            self.allStudents.append(i.returnList())
         self.headings = headings
     def display(self):
         print(tabulate(self.allStudents,self.headings))
@@ -65,7 +68,8 @@ class ReportCard():
 
         #Everything entered is valid
         newStudent = Student(name,admissionNumber,rollNumber,cl,scienceMarks,mathsMarks,SSTMarks,englishMarks)
-        self.allStudents = np.append(self.allStudents,[newStudent])
+        self.allStudentObjects = np.append(self.allStudentObjects,[newStudent])
+        self.allStudents.append(newStudent.returnList())
     
     def updateDetails(self,index):
         thingToUpdate = "1"
@@ -78,7 +82,8 @@ class ReportCard():
                 if (not self.validateString(newName)):
                     continue
                 else:
-                    self.allStudents[index].name = newName
+                    self.allStudentObjects[index].name = newName
+                    self.allStudents[index][0] = newName
                     print("Updated!")
             elif (thingToUpdate == '2'):
                 newAdmissionNumber = input("Enter the new admission number of the student : ")
@@ -86,21 +91,24 @@ class ReportCard():
                     continue
                 
                 else:
-                    self.allStudents[index].admissionNumber=  (newAdmissionNumber)
+                    self.allStudentObjects[index].admissionNumber=  int(newAdmissionNumber)
+                    self.allStudents[index][1] = int(newAdmissionNumber)
                     print("Updated!")
             elif (thingToUpdate == '3'):
                 newRollNumber = input("Enter the new roll number of the student : ")
                 if (not self.validateNumber(newRollNumber)):
                     continue
                 else:
-                    self.allStudents[index].rollNumber = (newRollNumber)
+                    self.allStudentObjects[index].rollNumber = int(newRollNumber)
+                    self.allStudents[index][2] = int(newRollNumber)
                     print("Updated!")
             elif (thingToUpdate == '4'):
                 newClass = input("Enter the new standard of the student :(NUMERIC ONLY) ")
                 if (not self.validateNumber(newClass)):
                     continue
                 else:
-                    self.allStudents[index].cl = int(newClass)
+                    self.allStudentsObjects[index].cl = (int(newClass))
+                    self.allStudents[index][3] = int(newClass)
                     print("Updated!")
             elif (thingToUpdate  == '5'):
                 # science   
@@ -108,7 +116,8 @@ class ReportCard():
                 if (not self.validateNumber(newScienceMarks)):
                     continue
                 else:
-                    self.allStudents[index].scienceMarks = (newScienceMarks)
+                    self.allStudentObjects[index].scienceMarks = (float(newScienceMarks))
+                    self.allStudents[index][4] = float(newScienceMarks)
                     print("Updated!")
             
             elif (thingToUpdate == '6'):
@@ -117,7 +126,8 @@ class ReportCard():
                 if (not self.validateNumber(newMathsMarks)):
                     continue
                 else:
-                    self.allStudents[index].mathsMarks = (newMathsMarks)
+                    self.allStudentObjects[index].mathsMarks = (float(newMathsMarks))
+                    self.allStudents[index][5] = float(newMathsMarks)
                     print("Updated!")
 
             elif (thingToUpdate == '7'):
@@ -126,7 +136,8 @@ class ReportCard():
                 if (not self.validateNumber(newSSTMarks)):
                     continue
                 else:
-                    self.allStudents[index].SSTMarks = (newSSTMarks)
+                    self.allStudentObjects[index].SSTMarks = (float(newSSTMarks))
+                    self.allStudents[index][6] = float(newSSTMarks)
                 print("Updated!")
 
             elif (thingToUpdate == '8'):
@@ -135,7 +146,8 @@ class ReportCard():
                 if (not self.validateNumber(newEnglishMarks)):
                     continue
                 else:
-                    self.allStudents[index].englishMarks =(newEnglishMarks)
+                    self.allStudentObjects[index].englishMarks =(float(newEnglishMarks))
+                    self.allStudents[index][7] = float(newEnglishMarks)
                 print("Updated!")
             elif (thingToUpdate == '9'):
                 break
