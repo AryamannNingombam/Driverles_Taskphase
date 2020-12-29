@@ -1,32 +1,52 @@
 from Student import Student
+# this library function is being used to display the table
 from tabulate import tabulate
+
 import numpy as np
+
+# this libary function is being imported for alignment purposes
 import shutil
 
 
 #  Name, Admission number, Roll number, 
 # Class, Science marks, Maths marks, Social studies marks and English marks
+
+# function that prints the text at the center of
+# the screen
 def printCenter(string):
         return ((string).center(shutil.get_terminal_size().columns))
 
 
 class ReportCard():
+
+
+
     def __init__(self,allStudents,headings):
+        # two arrays are being maintained,
+        # one containing the student object and
+        # the other only the values, the student object 
+        # would later help in getting the aggregate and
+        # displaying
         self.allStudentObjects= allStudents
         self.allStudents  = []
         for i in allStudents:
             self.allStudents.append(i.returnList())
+        # for displaying 
         self.headings = headings
 
+
+    # function that displays the students who
+    # cleared the aggregate cutoff
     def getAggregateList(self):
         print(printCenter("STUDENTS WHO PASSED AGGREGATE\n"))
         aggregateStudents  = list(filter(lambda x : x.getAggregate()>=90,self.allStudentObjects))
         self.printRanked(aggregateStudents)
 
-
+    # simple function that linearly searches for a 
+    # student by name
     def searchByName(self,name):
         length = len(self.allStudentObjects)
-        srting = 'fsdf'
+       
 
         for i in range(length):
             if ((self.allStudentObjects[i].name).lower() == name.lower()):
@@ -34,28 +54,46 @@ class ReportCard():
         return -1
 
 
+
+
+    # searching by roll number
     def searchByRollNumber(self,number):
+        number = int(number)
         length = len(self.allStudentObjects)
         for i in range(length):
             if (self.allStudentObjects[i].rollNumber == number):
                 return i
         return -1
-    
+
+
+    # searching by the class, not the best option 
+    # id say
     def searchByClass(self,cl):
+        print("IN SEARCH CLASS!")
+        cl = int(cl)
         length = len(self.allStudentObjects)
         for i in range(length):
             if (self.allStudentObjects[i].cl == cl):
+                print("FOUND!")
                 return i
         return -1
 
 
 
-    def searchStudent(self):
+
+
+
+    # main function that handles the main 
+    # logic behind searching the student, 
+    # to either display or update the 
+    def searchStudent(self,update):
         while (1):
-            parameter = input("""\n
-            1.Search by name\n2.Search by roll number\n3. Search by class
-            \n4.Quit\nEnter your option : 
-        """)
+            parameter = input("""
+            1.Search by name\n
+            2.Search by roll number\n
+            3. Search by class\n
+            4.Quit\n
+            Enter your option : """)
             if (not self.validateNumber(parameter)):
                 continue
             else:
@@ -84,12 +122,26 @@ class ReportCard():
                     index=  self.searchByClass(searchClass)
                 elif (temp==4):
                     break
+
                 if (index == -1):
                     printCenter("\nSTUDENT NOT FOUND!\n")
                     return
                 else:
-                    self.updateDetails(index)
-                        
+                    if (update):
+                        self.updateDetails(index)
+                    else:
+                        self.displayIndividualData(index)
+
+
+
+    def displayIndividualData(self,index):
+        stud = self.allStudentObjects[index]
+        studentToDisplay = self.allStudents[index]
+        printCenter("STUDENT DATA")
+        temp = np.append(self.headings,['Aggregate'])
+
+        print(tabulate([studentToDisplay+[stud.getAggregate()]],temp))
+        input("Press enter to continue")
 
     def parameter(self,student):
         return student.getAggregate()
@@ -132,13 +184,13 @@ class ReportCard():
         admissionNumber = input("Enter the admission number of the student : ")
         if (not self.validateNumber(admissionNumber)):
             return False
-        admissionNumber = (admissionNumber)
+
         
         rollNumber = input("Enter the roll number of the student : ")
         if (not self.validateNumber(rollNumber)):
             
             return False
-        rollNumber = (rollNumber)
+
 
         cl = input("Enter the standard of the student(IN NUMERIC FORM) : ")
         if (not self.validateNumber(cl)):
@@ -147,32 +199,34 @@ class ReportCard():
         
         if (not self.validateNumber(scienceMarks)):
             return False
-        scienceMarks = (scienceMarks)
+
 
         mathsMarks = input("Enter the marks obtained in Maths : ")
         if (not self.validateNumber(mathsMarks)):
             return False
 
-        mathsMarks = (mathsMarks)
+
 
         SSTMarks = input("Enter the marks obtained in SST : ") 
         if (not self.validateNumber(SSTMarks)):
             return False
-        SSTMarks = (SSTMarks)
+
 
         englishMarks = input("Enter the marks obtained in English : ")                
+
         if (not self.validateNumber(englishMarks)):
             return False
-        englishMarks = (englishMarks)
+
 
         #Everything entered is valid
         newStudent = Student(name,admissionNumber,rollNumber,cl,scienceMarks,mathsMarks,SSTMarks,englishMarks)
         self.allStudentObjects = np.append(self.allStudentObjects,[newStudent])
         self.allStudents.append(newStudent.returnList())
     
+    
     def updateDetails(self,index):
         thingToUpdate = "1"
-     
+
         while (thingToUpdate != "9"):
             thingToUpdate = input("""Enter the attribute to update :\n
             1. Name\n

@@ -1,5 +1,5 @@
 import pandas as pn
-import numpy as np
+import csv
 from reportCard import ReportCard
 import shutil
 from Student import Student
@@ -19,7 +19,7 @@ def checkUserInput(string):
     if (not string.isnumeric()):
         return False
     tempNum = int(string)
-    return  (tempNum>0 and tempNum <7)
+    return  (tempNum>0 and tempNum <8)
 
 def INVALID():
     print("INVALID")
@@ -60,7 +60,7 @@ while (userInput != '7'):
             studentReportCard.display()
 
         elif (userInput == '2'):
-            studentReportCard.searchStudent()
+            studentReportCard.searchStudent(False)
 
         elif (userInput == '3'):
             (studentReportCard.rankStudents())
@@ -73,11 +73,31 @@ while (userInput != '7'):
                 print("Student added!")
             
         elif (userInput == '6'):
-            studentReportCard.searchStudent()
+            studentReportCard.searchStudent(True)
         
         elif (userInput == '7'):
             print("\nThank you!\n")
             break
     
 
+#saving the file after all the playing
 
+with open("./studentList.csv","w") as file:
+    reader = csv.writer(file)
+    reader.writerow(studentReportCard.headings)
+    for i in studentReportCard.allStudentObjects:
+        reader.writerow(i.returnList())
+
+
+# Name,Adm.No.,RollNo.,Class,Science,Maths,SST,English
+# Aryamann,6969696969,69,12,99.0,99,99,99
+# Harkirat,1245867683,56,12,85.0,79,5,45
+# Shefali,4548455246,12,11,65.0,78,98,56
+# G-Eazy,4546787678,3,12,89.65,54,69,95
+# Eminem,1277898799,10,12,96.0,100,85,100
+# Tupac,12369,11,9,33.0,33,33,99
+# Aryan,466768,45,12,96,54,23,65
+# Ritvik,696969669,65,11,32,65,36,24
+# Arnav,6546865486,54,11,67,54,85,28
+# Bebe Rexa,463768473,19,6,13,79,69,69
+# Halsey,647768737,75,12,93,98,95,74
