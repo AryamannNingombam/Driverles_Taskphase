@@ -24,6 +24,72 @@ class ReportCard():
         self.printRanked(aggregateStudents)
 
 
+    def searchByName(self,name):
+        length = len(self.allStudentObjects)
+        srting = 'fsdf'
+
+        for i in range(length):
+            if ((self.allStudentObjects[i].name).lower() == name.lower()):
+                return i
+        return -1
+
+
+    def searchByRollNumber(self,number):
+        length = len(self.allStudentObjects)
+        for i in range(length):
+            if (self.allStudentObjects[i].rollNumber == number):
+                return i
+        return -1
+    
+    def searchByClass(self,cl):
+        length = len(self.allStudentObjects)
+        for i in range(length):
+            if (self.allStudentObjects[i].cl == cl):
+                return i
+        return -1
+
+
+
+    def searchStudent(self):
+        while (1):
+            parameter = input("""\n
+            1.Search by name\n2.Search by roll number\n3. Search by class
+            \n4.Quit\nEnter your option : 
+        """)
+            if (not self.validateNumber(parameter)):
+                continue
+            else:
+                temp = int(parameter)
+                index = -1
+                if (temp<1 or temp>4):
+                    self.PRINTINVALIDNUM()
+                    continue
+                elif (temp==1):
+                    searchName = input("Enter the name : ")
+                    if (not self.validateString(searchName)):
+                        return
+                    index = self.searchByName(searchName)
+
+                elif (temp==2):
+                    searchRollNumber = input("Enter the roll number of the student : ")
+                    if (not self.validateNumber(searchRollNumber)):
+                        return
+                    index = self.searchByRollNumber(searchRollNumber)
+
+
+                elif (temp==3):
+                    searchClass =input("Enter the class of the student(NUMERIC ONLY) : ")
+                    if (not self.validateNumber(searchClass)):
+                        return
+                    index=  self.searchByClass(searchClass)
+                elif (temp==4):
+                    break
+                if (index == -1):
+                    printCenter("\nSTUDENT NOT FOUND!\n")
+                    return
+                else:
+                    self.updateDetails(index)
+                        
 
     def parameter(self,student):
         return student.getAggregate()
@@ -33,7 +99,7 @@ class ReportCard():
         for i in ranked[:10]:
             print(printCenter(str(counter)+'.' +str(i)))
             counter+=1
-        inp = input("Press enter to continue : ")
+        input("Press enter to continue : ")
 
     def rankStudents(self):
         print(printCenter("RANKS SCORED ABOVE AGGREGATE\n"))
@@ -41,7 +107,8 @@ class ReportCard():
         ranked.sort(key=self.parameter,reverse=True)
         self.printRanked(ranked)
         
-        
+    def PRINTINVALIDNUM(self):
+        print("INVALID\nPlease make sure that you have entered only numeric values")
 
     def display(self):
         print(tabulate(self.allStudents,self.headings))
@@ -49,7 +116,7 @@ class ReportCard():
         return
     def validateNumber(self,num):
         if (not num.isnumeric() or int(num)<=0):
-            print("INVALID\nPlease make sure that you have entered only numeric values")
+            self.PRINTINVALIDNUM()
             return False
         return True
     def validateString(self,string):
@@ -105,10 +172,18 @@ class ReportCard():
     
     def updateDetails(self,index):
         thingToUpdate = "1"
-        if (not thingToUpdate.isnumeric()):
-            print("Invalid!")
+     
         while (thingToUpdate != "9"):
-            thingToUpdate = input("Enter the attribute to update :\n1. Name\n2. Admission number\n3. Roll number\n4. Class\n5. Science Marks\n6. Maths Marks\n7. SST Marks\n8. English Marks\n9. Quit")
+            thingToUpdate = input("""Enter the attribute to update :\n
+            1. Name\n
+            2. Admission number\n
+            3. Roll number\n
+            4. Class\n
+            5. Science Marks\n
+            6. Maths Marks\n
+            7. SST Marks\n
+            8. English Marks\n
+            9. Quit\nEnter your option : """)
             if (thingToUpdate == '1'):
                 newName = input("Enter the new name of the student : ")
                 if (not self.validateString(newName)):

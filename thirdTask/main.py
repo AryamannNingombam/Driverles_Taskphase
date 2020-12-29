@@ -8,6 +8,7 @@ from Student import Student
 
 
 
+
 def returnStudentList(arr):
     result = []
     for i in arr:
@@ -35,7 +36,8 @@ def printOptions():
     3. Get the list of Top 10 students in the batch.\n
     4. Get the list of students who scored more than the aggregate.\n
     5. Add new student.\n
-    6. Quit.\n
+    6. Update details about a student.\n
+    7. Quit.\n
 
     """)
     return
@@ -47,7 +49,7 @@ studentReportCard = ReportCard(returnStudentList(allStudentsCSV.values),allStude
 
 userInput = "sexy"
 
-while (userInput != '6'):
+while (userInput != '7'):
     printOptions()
     userInput = input("Enter your option : ")
     if (not checkUserInput(userInput)):
@@ -57,8 +59,8 @@ while (userInput != '6'):
         if (userInput == '1'):
             studentReportCard.display()
 
-        # elif (userInput == '2'):
-
+        elif (userInput == '2'):
+            studentReportCard.searchStudent()
 
         elif (userInput == '3'):
             (studentReportCard.rankStudents())
@@ -70,9 +72,10 @@ while (userInput != '6'):
             if (studentReportCard.addStudent()):
                 print("Student added!")
             
-    
-        
         elif (userInput == '6'):
+            studentReportCard.searchStudent()
+        
+        elif (userInput == '7'):
             print("\nThank you!\n")
             break
     
