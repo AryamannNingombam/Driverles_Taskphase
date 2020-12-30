@@ -3,6 +3,9 @@
 # Class, Science marks, Maths marks, Social studies marks and English marks
 import statistics as stat
 
+
+# this class has been made to make it easy for storing the values
+# and to make appropriate changes and calculations
 class Student():
     def __init__(self,name,admissionNumber,rollNumber,cl,scienceMarks,mathsMarks,SSTMarks,englishMarks):
         self.name =  name
