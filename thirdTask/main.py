@@ -70,13 +70,13 @@ while (userInput != '7'):
 
         elif (userInput == '5'):
             if (studentReportCard.addStudent()):
-                print("Student added!")
+                print(printCenter("Student added!"))
             
         elif (userInput == '6'):
             studentReportCard.searchStudent(True)
         
         elif (userInput == '7'):
-            print("\nThank you!\n")
+            print(printCenter("\nThank you!\n"))
             break
     
 

@@ -69,12 +69,10 @@ class ReportCard():
     # searching by the class, not the best option 
     # id say
     def searchByClass(self,cl):
-        print("IN SEARCH CLASS!")
         cl = int(cl)
         length = len(self.allStudentObjects)
         for i in range(length):
             if (self.allStudentObjects[i].cl == cl):
-                print("FOUND!")
                 return i
         return -1
 
@@ -123,17 +121,25 @@ class ReportCard():
                 elif (temp==4):
                     break
 
+                    # this statement
+                    # would be true when the input
+                    # entered by the user does not exist
                 if (index == -1):
-                    printCenter("\nSTUDENT NOT FOUND!\n")
+                    print(printCenter("\nSTUDENT NOT FOUND!\n"))
+                    input("Press enter to continue")
                     return
                 else:
+                    # this would trigger when user wants
+                    # to update the student's data
                     if (update):
                         self.updateDetails(index)
                     else:
+                    # this would trigger when user only wants 
+                    # to see some student's data
                         self.displayIndividualData(index)
 
 
-
+    # displays data of student in tabular format
     def displayIndividualData(self,index):
         stud = self.allStudentObjects[index]
         studentToDisplay = self.allStudents[index]
@@ -143,9 +149,13 @@ class ReportCard():
         print(tabulate([studentToDisplay+[stud.getAggregate()]],temp))
         input("Press enter to continue")
 
+
+    # this function is used to sort the
+    #  students based on their aggregate
     def parameter(self,student):
         return student.getAggregate()
 
+    # function that prints the top 10 students in the class.
     def printRanked(self,ranked):
         counter=1
         for i in ranked[:10]:
@@ -153,29 +163,41 @@ class ReportCard():
             counter+=1
         input("Press enter to continue : ")
 
+    # this function calls the printRanked function after
+    # sorting the students based on their merit
     def rankStudents(self):
         print(printCenter("RANKS SCORED ABOVE AGGREGATE\n"))
         ranked = self.allStudentObjects
         ranked.sort(key=self.parameter,reverse=True)
         self.printRanked(ranked)
         
+    # just a function to print invalid inputs as im lazy 
+    # to write same lines again.
     def PRINTINVALIDNUM(self):
         print("INVALID\nPlease make sure that you have entered only numeric values")
 
+    # displays all the students
     def display(self):
         print(tabulate(self.allStudents,self.headings))
         quit = input("Press enter to quit.")
         return
+
+# function that validates user data
+# when it is expected to be a number
     def validateNumber(self,num):
         if (not num.isnumeric() or int(num)<=0):
             self.PRINTINVALIDNUM()
             return False
         return True
+
+# function that validates user data
+# when it is expected to be a string
     def validateString(self,string):
         if (not string.isalpha()):
             print("INVALID NAME.\nPlease make sure that you have entered only characters for the name")
             return False
         return True
+# function that adds a new student to the array and the DB
     def addStudent(self):
         name = input("Enter the name of the student : ")
         if (not self.validateString(name)):
@@ -223,7 +245,7 @@ class ReportCard():
         self.allStudentObjects = np.append(self.allStudentObjects,[newStudent])
         self.allStudents.append(newStudent.returnList())
     
-    
+    # function that updates the data of an existing student
     def updateDetails(self,index):
         thingToUpdate = "1"
 
