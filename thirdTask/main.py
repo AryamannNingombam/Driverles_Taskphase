@@ -37,6 +37,7 @@ def printOptions():
     4. Get the list of students who scored more than the aggregate.\n
     5. Add new student.\n
     6. Update details about a student.\n
+ 
     7. Quit.\n
 
     """)
@@ -60,8 +61,8 @@ while (userInput != '7'):
             studentReportCard.display()
 
         elif (userInput == '2'):
-            studentReportCard.searchStudent(False)
-
+            index = studentReportCard.searchStudent()
+            studentReportCard.displayIndividualData(index)
         elif (userInput == '3'):
             (studentReportCard.rankStudents())
 
@@ -73,10 +74,11 @@ while (userInput != '7'):
                 print(printCenter("Student added!"))
             
         elif (userInput == '6'):
-            studentReportCard.searchStudent(True)
-        
+            index = studentReportCard.searchStudent()
+            studentReportCard.updateDetails(index)
+
         elif (userInput == '7'):
-            print(printCenter("\nThank you!\n"))
+            (printCenter("\nThank you!\n"))
             break
     
 

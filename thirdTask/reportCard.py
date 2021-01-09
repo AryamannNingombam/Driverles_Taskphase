@@ -84,7 +84,7 @@ class ReportCard():
     # main function that handles the main 
     # logic behind searching the student, 
     # to either display or update the 
-    def searchStudent(self,update):
+    def searchStudent(self):
         while (1):
             parameter = input("""
             1.Search by name\n
@@ -129,14 +129,7 @@ class ReportCard():
                     input("Press enter to continue")
                     return
                 else:
-                    # this would trigger when user wants
-                    # to update the student's data
-                    if (update):
-                        self.updateDetails(index)
-                    else:
-                    # this would trigger when user only wants 
-                    # to see some student's data
-                        self.displayIndividualData(index)
+                   return index
 
 
     # displays data of student in tabular format
@@ -174,13 +167,17 @@ class ReportCard():
     # just a function to print invalid inputs as im lazy 
     # to write same lines again.
     def PRINTINVALIDNUM(self):
-        print("INVALID\nPlease make sure that you have entered only numeric values")
+        print("INVALID\nPlease make sure that you have entered values")
 
     # displays all the students
     def display(self):
         print(tabulate(self.allStudents,self.headings))
         quit = input("Press enter to quit.")
         return
+
+
+
+
 
 # function that validates user data
 # when it is expected to be a number
@@ -217,28 +214,37 @@ class ReportCard():
         cl = input("Enter the standard of the student(IN NUMERIC FORM) : ")
         if (not self.validateNumber(cl)):
             return False
+     
+        if int(cl)>12:
+            return False
         scienceMarks = input("Enter the marks obtained in Science : ")
         
         if (not self.validateNumber(scienceMarks)):
             return False
-
+    
+        if float(scienceMarks)<0 or float(scienceMarks)>100:
+            return False
 
         mathsMarks = input("Enter the marks obtained in Maths : ")
         if (not self.validateNumber(mathsMarks)):
+            
             return False
-
+        if float(mathsMarks)<0 or float(mathsMarks)>100:
+            return False
 
 
         SSTMarks = input("Enter the marks obtained in SST : ") 
         if (not self.validateNumber(SSTMarks)):
             return False
-
+        if float(SSTMarks)<0 or float(SSTMarks)>100:
+            return False
 
         englishMarks = input("Enter the marks obtained in English : ")                
 
         if (not self.validateNumber(englishMarks)):
             return False
-
+        if float(englishMarks)<0 or float(englishMarks)>100:
+            return False
 
         #Everything entered is valid
         newStudent = Student(name,admissionNumber,rollNumber,cl,scienceMarks,mathsMarks,SSTMarks,englishMarks)
@@ -290,7 +296,10 @@ class ReportCard():
                 if (not self.validateNumber(newClass)):
                     continue
                 else:
-                    self.allStudentsObjects[index].cl = (int(newClass))
+                    if (int(newClass)>12):
+                        self.PRINTINVALIDNUM()
+                        continue
+                    self.allStudentObjects[index].cl = (int(newClass))
                     self.allStudents[index][3] = int(newClass)
                     print("Updated!")
             elif (thingToUpdate  == '5'):
@@ -299,6 +308,10 @@ class ReportCard():
                 if (not self.validateNumber(newScienceMarks)):
                     continue
                 else:
+                    newScienceMarks = float(newScienceMarks)
+                    if newScienceMarks<0 or newScienceMarks>100:
+                        self.PRINTINVALIDNUM()
+                        continue
                     self.allStudentObjects[index].scienceMarks = (float(newScienceMarks))
                     self.allStudents[index][4] = float(newScienceMarks)
                     print("Updated!")
@@ -309,6 +322,10 @@ class ReportCard():
                 if (not self.validateNumber(newMathsMarks)):
                     continue
                 else:
+                    newMathsMarks = float(newMathsMarks)
+                    if newMathsMarks<0 or newMathsMarks>100:
+                        self.PRINTINVALIDNUM()
+                        continue
                     self.allStudentObjects[index].mathsMarks = (float(newMathsMarks))
                     self.allStudents[index][5] = float(newMathsMarks)
                     print("Updated!")
@@ -319,6 +336,10 @@ class ReportCard():
                 if (not self.validateNumber(newSSTMarks)):
                     continue
                 else:
+                    newSSTMarks = float(newSSTMarks)
+                    if newSSTMarks<0 or newSSTMarks>100:
+                        self.PRINTINVALIDNUM()
+                        continue
                     self.allStudentObjects[index].SSTMarks = (float(newSSTMarks))
                     self.allStudents[index][6] = float(newSSTMarks)
                 print("Updated!")
@@ -329,6 +350,11 @@ class ReportCard():
                 if (not self.validateNumber(newEnglishMarks)):
                     continue
                 else:
+                    newEnglishMarks=float(newEnglishMarks)
+                    if newEnglishMarks<0 or newEnglishMarks>100:
+                        self.PRINTINVALIDNUM()
+                        continue
+
                     self.allStudentObjects[index].englishMarks =(float(newEnglishMarks))
                     self.allStudents[index][7] = float(newEnglishMarks)
                 print("Updated!")
