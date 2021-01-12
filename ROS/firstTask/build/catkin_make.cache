@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/ary_amann/Desktop/formulaManipal/ROS/firstTask/devel -DCMAKE_INSTALL_PREFIX=/home/ary_amann/Desktop/formulaManipal/ROS/firstTask/install -G Unix Makefiles
