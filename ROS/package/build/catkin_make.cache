@@ -1,2 +1,0 @@
-number-sum
--DCATKIN_DEVEL_PREFIX=/home/ary_amann/Desktop/formulaManipal/ROS/package/devel -DCMAKE_INSTALL_PREFIX=/home/ary_amann/Desktop/formulaManipal/ROS/package/install -G Unix Makefiles
