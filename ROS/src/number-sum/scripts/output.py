@@ -12,6 +12,7 @@ def callback(msg):
 def run():
     rospy.init_node("output",anonymous=True)
     rospy.Subscriber("getSum", Float32MultiArray, callback)
+    rospy.spin()
    
     
 

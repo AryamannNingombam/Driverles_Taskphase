@@ -13,7 +13,7 @@ def main():
     firstNumber = int(input("Enter the first number : "))
     secondNumber = int(input("Enter the second number : "))
     pub.publish(Float32MultiArray(data=[firstNumber,secondNumber]))
-    
+
 
 if __name__ == '__main__':
     try:
