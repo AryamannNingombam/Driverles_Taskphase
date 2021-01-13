@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ary_amann/Desktop/formulaManipal/ROS/build/gtest/cmake_install.cmake")
+  include("/home/ary_amann/Desktop/formulaManipal/ROS/build/number-sum/cmake_install.cmake")
 
 endif()
 

@@ -1,0 +1,8 @@
+prefix=/home/ary_amann/Desktop/formulaManipal/ROS/install
+
+Name: number-sum
+Description: Description of number-sum
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
