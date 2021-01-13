@@ -9,7 +9,7 @@ from std_msgs.msg import Float32MultiArray
 def main():
     pub = ros.Publisher("getSum", Float32MultiArray, queue_size=10)
     
-    ros.node_init("input",anonymous=True)
+    ros.init_node("input",anonymous=True)
     firstNumber = int(input("Enter the first number : "))
     secondNumber = int(input("Enter the second number : "))
     timer = ros.Rate(10)
