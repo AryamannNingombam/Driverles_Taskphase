@@ -12,6 +12,12 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
 )
+catkin_install_python(PROGRAMS scripts/input.py scripts/output.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
