@@ -7,4 +7,10 @@
 # new environment variables
 
 # modified environment variables
+export CMAKE_PREFIX_PATH="/home/ary_amann/Desktop/formulaManipal/ROS/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/ary_amann/Desktop/formulaManipal/ROS/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/ary_amann/Desktop/formulaManipal/ROS/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/ary_amann/Desktop/formulaManipal/ROS/build'
+export PYTHONPATH="/home/ary_amann/Desktop/formulaManipal/ROS/devel/lib/python2.7/dist-packages:$PYTHONPATH"
+export ROSLISP_PACKAGE_DIRECTORIES='/home/ary_amann/Desktop/formulaManipal/ROS/devel/share/common-lisp'
+export ROS_PACKAGE_PATH="/home/ary_amann/Desktop/formulaManipal/ROS/src:$ROS_PACKAGE_PATH"

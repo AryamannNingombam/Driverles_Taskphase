@@ -1,0 +1,8 @@
+prefix=/home/ary_amann/Desktop/formulaManipal/ROS/devel
+
+Name: three-tier-arch
+Description: Description of three-tier-arch
+Version: 0.0.0
+Cflags: -I/home/ary_amann/Desktop/formulaManipal/ROS/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime
