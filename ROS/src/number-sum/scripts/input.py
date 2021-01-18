@@ -12,6 +12,7 @@ def main():
     ros.init_node("input",anonymous=True)
     firstNumber = int(input("Enter the first number : "))
     secondNumber = int(input("Enter the second number : "))
+
     pub.publish(Float32MultiArray(data=[firstNumber,secondNumber]))
 
 
