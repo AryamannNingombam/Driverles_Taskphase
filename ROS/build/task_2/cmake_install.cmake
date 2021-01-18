@@ -88,3 +88,15 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/task_2" TYPE FILE FILES "/home/ary_amann/Desktop/formulaManipal/ROS/src/task_2/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/task_2" TYPE PROGRAM FILES "/home/ary_amann/Desktop/formulaManipal/ROS/build/task_2/catkin_generated/installspace/input.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/task_2" TYPE PROGRAM FILES "/home/ary_amann/Desktop/formulaManipal/ROS/build/task_2/catkin_generated/installspace/output.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/task_2" TYPE PROGRAM FILES "/home/ary_amann/Desktop/formulaManipal/ROS/build/task_2/catkin_generated/installspace/check.py")
+endif()
+
