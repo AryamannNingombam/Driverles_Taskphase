@@ -38,7 +38,7 @@ struct nameAge_
    typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _name_type;
   _name_type name;
 
-   typedef uint8_t _age_type;
+   typedef int64_t _age_type;
   _age_type age;
 
 
@@ -128,12 +128,12 @@ struct MD5Sum< ::task_2::nameAge_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "453db5a1253432b9f9c5ecabc5695077";
+    return "777a0ba04feb2b848668b8ed180bf7eb";
   }
 
   static const char* value(const ::task_2::nameAge_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x453db5a1253432b9ULL;
-  static const uint64_t static_value2 = 0xf9c5ecabc5695077ULL;
+  static const uint64_t static_value1 = 0x777a0ba04feb2b84ULL;
+  static const uint64_t static_value2 = 0x8668b8ed180bf7ebULL;
 };
 
 template<class ContainerAllocator>
@@ -153,7 +153,7 @@ struct Definition< ::task_2::nameAge_<ContainerAllocator> >
   static const char* value()
   {
     return "string name\n"
-"uint8 age\n"
+"int64 age\n"
 ;
   }
 
@@ -195,7 +195,7 @@ struct Printer< ::task_2::nameAge_<ContainerAllocator> >
     s << indent << "name: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.name);
     s << indent << "age: ";
-    Printer<uint8_t>::stream(s, indent + "  ", v.age);
+    Printer<int64_t>::stream(s, indent + "  ", v.age);
   }
 };
 

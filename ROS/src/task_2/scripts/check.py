@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import rospy
-from task_2.msg import nameAndAge
+from task_2.msg import nameAge
 
 
 
@@ -13,7 +13,7 @@ def callback(msg):
 if __name__ == '__main__':
 
     rospy.init_node("Output",anonymous=True)
-    rospy.Subscriber("three-tier", nameAndAge, callback)
+    rospy.Subscriber("three-tier", nameAge, callback)
     
 
     rospy.spin()

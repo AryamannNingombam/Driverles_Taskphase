@@ -8,14 +8,14 @@ import struct
 
 
 class nameAge(genpy.Message):
-  _md5sum = "453db5a1253432b9f9c5ecabc5695077"
+  _md5sum = "777a0ba04feb2b848668b8ed180bf7eb"
   _type = "task_2/nameAge"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string name
-uint8 age
+int64 age
 """
   __slots__ = ['name','age']
-  _slot_types = ['string','uint8']
+  _slot_types = ['string','int64']
 
   def __init__(self, *args, **kwds):
     """
@@ -61,7 +61,7 @@ uint8 age
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self.age
-      buff.write(_get_struct_B().pack(_x))
+      buff.write(_get_struct_q().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -83,8 +83,8 @@ uint8 age
       else:
         self.name = str[start:end]
       start = end
-      end += 1
-      (self.age,) = _get_struct_B().unpack(str[start:end])
+      end += 8
+      (self.age,) = _get_struct_q().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -104,7 +104,7 @@ uint8 age
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self.age
-      buff.write(_get_struct_B().pack(_x))
+      buff.write(_get_struct_q().pack(_x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -127,8 +127,8 @@ uint8 age
       else:
         self.name = str[start:end]
       start = end
-      end += 1
-      (self.age,) = _get_struct_B().unpack(str[start:end])
+      end += 8
+      (self.age,) = _get_struct_q().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -137,9 +137,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_B = None
-def _get_struct_B():
-    global _struct_B
-    if _struct_B is None:
-        _struct_B = struct.Struct("<B")
-    return _struct_B
+_struct_q = None
+def _get_struct_q():
+    global _struct_q
+    if _struct_q is None:
+        _struct_q = struct.Struct("<q")
+    return _struct_q

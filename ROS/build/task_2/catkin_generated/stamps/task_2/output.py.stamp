@@ -1,2 +1,2 @@
 import rospy
-from task_2.msg import nameAndAge
+from task_2.msg import nameAge

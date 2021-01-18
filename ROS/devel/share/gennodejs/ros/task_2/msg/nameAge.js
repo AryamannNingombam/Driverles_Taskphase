@@ -42,7 +42,7 @@ class nameAge {
     // Serialize message field [name]
     bufferOffset = _serializer.string(obj.name, buffer, bufferOffset);
     // Serialize message field [age]
-    bufferOffset = _serializer.uint8(obj.age, buffer, bufferOffset);
+    bufferOffset = _serializer.int64(obj.age, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -53,14 +53,14 @@ class nameAge {
     // Deserialize message field [name]
     data.name = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [age]
-    data.age = _deserializer.uint8(buffer, bufferOffset);
+    data.age = _deserializer.int64(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += object.name.length;
-    return length + 5;
+    return length + 12;
   }
 
   static datatype() {
@@ -70,14 +70,14 @@ class nameAge {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '453db5a1253432b9f9c5ecabc5695077';
+    return '777a0ba04feb2b848668b8ed180bf7eb';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     string name
-    uint8 age
+    int64 age
     
     `;
   }
