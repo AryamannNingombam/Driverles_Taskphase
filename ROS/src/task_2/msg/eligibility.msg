@@ -1,0 +1,2 @@
+nameAge person
+string eligi

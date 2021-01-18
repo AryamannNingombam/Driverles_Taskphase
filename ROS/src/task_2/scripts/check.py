@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
-from task_2.msg import nameAge
+from task_2.msg import nameAge,eligibility
 from std_msgs.msg import Bool
 
 
