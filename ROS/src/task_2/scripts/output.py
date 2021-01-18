@@ -2,17 +2,17 @@
 
 import rospy
 from task_2.msg import nameAge,eligibility
-from std_msgs.msg import Bool
+
 
 
 def callback(msg):
-    print(msg)
-    print(msg.data)
-
-
+ 
+ 
+    print('Name ' + msg.person.name + ' | Age : ' + str(msg.person.age))
+    print(msg.eligi)
 if __name__ == '__main__':
     rospy.init_node("printNode",anonymous=True)
-    rospy.Subscriber("sendEligibility", Bool, callback)
+    rospy.Subscriber("sendEligibility",eligibility, callback)
     
     rospy.spin()
     

@@ -38,7 +38,10 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/task_2/msg" TYPE FILE FILES "/home/ary_amann/Desktop/formulaManipal/ROS/src/task_2/msg/nameAge.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/task_2/msg" TYPE FILE FILES
+    "/home/ary_amann/Desktop/formulaManipal/ROS/src/task_2/msg/nameAge.msg"
+    "/home/ary_amann/Desktop/formulaManipal/ROS/src/task_2/msg/eligibility.msg"
+    )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/task_2_generate_messages_nodejs"
+  "/home/ary_amann/Desktop/formulaManipal/ROS/devel/share/gennodejs/ros/task_2/msg/eligibility.js"
   "/home/ary_amann/Desktop/formulaManipal/ROS/devel/share/gennodejs/ros/task_2/msg/nameAge.js"
 )
 

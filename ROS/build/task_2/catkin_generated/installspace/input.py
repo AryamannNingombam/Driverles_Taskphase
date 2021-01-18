@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 import rospy 
-from task_2.msg import nameAge
+from task_2.msg import nameAge,eligibility
 
 
 

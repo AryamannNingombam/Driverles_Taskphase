@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/ary_amann/Desktop/formulaManipal/ROS/src/task_2/msg/nameAge.msg"
+messages_str = "/home/ary_amann/Desktop/formulaManipal/ROS/src/task_2/msg/nameAge.msg;/home/ary_amann/Desktop/formulaManipal/ROS/src/task_2/msg/eligibility.msg"
 services_str = ""
 pkg_name = "task_2"
 dependencies_str = "std_msgs"

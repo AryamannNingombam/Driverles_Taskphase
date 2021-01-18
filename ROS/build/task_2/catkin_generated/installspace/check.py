@@ -1,31 +1,28 @@
 #!/usr/bin/env python2
-from ROS.src.task_2.scripts.input import pub
+
 import rospy
-from task_2.msg import nameAge
-from std_msgs import Bool
+from task_2.msg import nameAge,eligibility
 
 
-def publish(name,age):
 
-    message_pub = rospy.Publisher("sendEligibility", Bool, queue_size=10)
-    rospy.init_node("eligibilityPublisher",anonymous=True)
+def publish(msg):
+
+    message_pub = rospy.Publisher("sendEligibility", eligibility, queue_size=10)
+    print("PUBLISHING!")
 
     if age< 18:
-        message_pub.publish(Bool(data=False))
+        message_pub.publish(eligibilty(msg,'Not eligible'))
     else:
-        message_pub.publish(Bool(data=True))
+        message_pub.publish(eligibility(msg,'eligible'))
 
 
 
-def callback(msg):
-    print(msg)
-    print('Name'+ ': '+msg.name+' , Age : ' + str(msg.age))
-    publish(msg.name,msg.age)
+ 
 
 if __name__ == '__main__':
 
     rospy.init_node("Output",anonymous=True)
-    rospy.Subscriber("sendNameAge", nameAge, callback)
+    rospy.Subscriber("sendNameAge", nameAge, publish)
     
 
     rospy.spin()
