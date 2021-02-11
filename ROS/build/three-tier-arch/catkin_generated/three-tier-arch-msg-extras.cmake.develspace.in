@@ -1,2 +1,0 @@
-set(three-tier-arch_MESSAGE_FILES "/home/ary_amann/Desktop/formulaManipal/ROS/src/three-tier-arch/msg/nameAndAge.msg")
-set(three-tier-arch_SERVICE_FILES "")

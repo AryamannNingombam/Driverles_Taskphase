@@ -1,8 +1,0 @@
-prefix=/home/ary_amann/Desktop/formulaManipal/ROS/install
-
-Name: task_2
-Description: Description of task_2
-Version: 0.0.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib 
-Requires: message_runtime roscpp rospy std_msgs
